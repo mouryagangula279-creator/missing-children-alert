@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Delete Case | SafeTrace</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+
+        /* HEADER */
+
+        header {
+            background: #123b5d;
+            color: white;
+            padding: 18px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: white;
+            color: #123b5d;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .logo h2 {
+            margin: 0;
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+
+            border: 1px solid white;
+
+            padding: 9px 16px;
+
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #123b5d;
+        }
+
+
+        /* MAIN CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+
+            margin: 50px auto;
+        }
+
+
+        /* DELETE CARD */
+
+        .delete-card {
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+
+            text-align: center;
+        }
+
+
+        /* WARNING ICON */
+
+        .warning-icon {
+            width: 75px;
+            height: 75px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: #fbe9e9;
+            color: #b3261e;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 38px;
+
+            font-weight: bold;
+        }
+
+
+        .delete-card h1 {
+            margin-top: 0;
+
+            color: #b3261e;
+        }
+
+        .delete-card p {
+            color: #666;
+
+            line-height: 1.6;
+        }
+
+
+        /* CASE INFORMATION */
+
+        .case-info {
+            margin-top: 25px;
+
+            padding: 20px;
+
+            background: #f4f6f8;
+
+            border-radius: 8px;
+
+            text-align: left;
+        }
+
+        .case-info h3 {
+            margin-top: 0;
+
+            color: #123b5d;
+        }
+
+        .info-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 10px 0;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: bold;
+
+            color: #123b5d;
+
+            flex-shrink: 0;
+        }
+
+
+        /* WARNING MESSAGE */
+
+        .warning-text {
+            margin-top: 25px;
+
+            padding: 15px;
+
+            background: #fff3cd;
+
+            border-radius: 6px;
+
+            color: #856404;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        /* BUTTONS */
+
+        .button-section {
+            margin-top: 30px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+        }
+
+        .delete-btn {
+            background: #b3261e;
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 24px;
+
+            border-radius: 5px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            opacity: 0.9;
+        }
+
+        .cancel-btn {
+            background: #e8eef3;
+
+            color: #123b5d;
+
+            text-decoration: none;
+
+            padding: 12px 24px;
+
+            border-radius: 5px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .cancel-btn:hover {
+            opacity: 0.9;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 50px;
+
+            background: #123b5d;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 18px;
+
+            font-size: 13px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .delete-card {
+                padding: 25px 18px;
+            }
+
+            .info-row {
+                flex-direction: column;
+
+                gap: 5px;
+            }
+
+            .button-section {
+                flex-direction: column;
+            }
+
+            .delete-btn,
+            .cancel-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            ST
+        </div>
+
+        <div>
+
+            <h2>SafeTrace</h2>
+
+            <small>
+                Missing Child Alert and Response System
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="{% url 'case_detail' case.id %}"
+        class="back-btn"
+    >
+        Back to Case
+    </a>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <div class="delete-card">
+
+
+        <!-- WARNING ICON -->
+
+        <div class="warning-icon">
+            !
+        </div>
+
+
+        <h1>Delete Missing Child Case?</h1>
+
+
+        <p>
+            You are about to permanently delete this missing-child case.
+            Please review the case information carefully before continuing.
+        </p>
+
+
+        <!-- CASE DETAILS -->
+
+        <div class="case-info">
+
+
+            <h3>Case Information</h3>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Case Number
+                </span>
+
+                <span>
+                    {{ case.case_number }}
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Child Name
+                </span>
+
+                <span>
+                    {{ case.child_name }}
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Age
+                </span>
+
+                <span>
+                    {{ case.age }}
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Gender
+                </span>
+
+                <span>
+                    {{ case.get_gender_display }}
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Current Status
+                </span>
+
+                <span>
+                    {{ case.get_status_display }}
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Last Seen Location
+                </span>
+
+                <span>
+                    {{ case.location_last_seen }}
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- WARNING -->
+
+        <div class="warning-text">
+
+            <strong>Warning:</strong>
+
+            This action cannot be undone. The case and all alerts
+            associated with this case will be permanently deleted.
+
+        </div>
+
+
+        <!-- CONFIRMATION FORM -->
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <div class="button-section">
+
+
+                <button
+                    type="submit"
+                    class="delete-btn"
+                >
+                    Yes, Delete Case
+                </button>
+
+
+                <a
+                    href="{% url 'case_detail' case.id %}"
+                    class="cancel-btn"
+                >
+                    Cancel
+                </a>
+
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+
+<footer>
+
+    SafeTrace — Missing Child Alert and Response System
+
+    <br>
+
+    Academic Project Prototype
+
+</footer>
+
+
+</body>
+
+</html>

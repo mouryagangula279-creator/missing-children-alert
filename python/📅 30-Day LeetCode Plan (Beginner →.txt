@@ -1,0 +1,217 @@
+📅 30-Day LeetCode Plan (Beginner → Strong Basics)
+Week 1 – Python + Basic Logic
+
+Focus: loops, conditions, arrays, simple math.
+
+Day 1
+
+Fizz Buzz
+
+Running Sum of 1D Array
+
+Day 2
+
+Richest Customer Wealth
+
+Number of Steps to Reduce a Number to Zero
+
+Day 3
+
+Shuffle the Array
+
+Final Value of Variable After Performing Operations
+
+Day 4
+
+Kids With the Greatest Number of Candies
+
+Maximum Number of Words Found in Sentences
+
+Day 5
+
+Jewels and Stones
+
+Defanging an IP Address
+
+Day 6
+
+Build Array from Permutation
+
+Concatenation of Array
+
+Day 7
+
+Review all problems
+
+Re-solve 3 without looking at solutions
+
+Week 2 – Strings + Arrays
+
+Focus: string operations and list operations.
+
+Day 8
+
+Valid Palindrome
+
+Length of Last Word
+
+Day 9
+
+Merge Strings Alternately
+
+Goal Parser Interpretation
+
+Day 10
+
+Reverse String
+
+Check if the Sentence Is Pangram
+
+Day 11
+
+Truncate Sentence
+
+To Lower Case
+
+Day 12
+
+Count Items Matching a Rule
+
+Matrix Diagonal Sum
+
+Day 13
+
+Find Numbers with Even Number of Digits
+
+Maximum Product of Two Elements in an Array
+
+Day 14
+
+Review + repeat difficult problems
+
+Week 3 – Hash Maps (Important for Interviews)
+
+Focus: dictionaries in Python.
+
+Day 15
+
+Two Sum
+
+Contains Duplicate
+
+Day 16
+
+Valid Anagram
+
+Intersection of Two Arrays
+
+Day 17
+
+Majority Element
+
+Find the Difference
+
+Day 18
+
+First Unique Character in a String
+
+Ransom Note
+
+Day 19
+
+Single Number
+
+Missing Number
+
+Day 20
+
+Isomorphic Strings
+
+Word Pattern
+
+Day 21
+
+Review all hash map problems
+
+Week 4 – Patterns Used in Interviews
+
+Focus: common problem-solving techniques.
+
+Day 22
+
+Move Zeroes
+
+Squares of a Sorted Array
+
+Day 23
+
+Remove Duplicates from Sorted Array
+
+Valid Palindrome II
+
+Day 24
+
+Binary Search
+
+Guess Number Higher or Lower
+
+Day 25
+
+Search Insert Position
+
+Find Peak Element
+
+Day 26
+
+Climbing Stairs
+
+Day 27
+
+Pascal's Triangle
+
+Day 28
+
+Best Time to Buy and Sell Stock
+
+Day 29
+
+Review 5 hardest problems you solved
+
+Day 30
+
+Solve 3 new Easy problems without help
+
+Daily Routine (Very Important) ⏱️
+
+Each day:
+
+1️⃣ Read problem – 5 minutes
+2️⃣ Think solution – 10 minutes
+3️⃣ Code in Python – 15 minutes
+4️⃣ If stuck → check solution → rewrite yourself
+
+Total: ~30–40 minutes per day
+
+After 30 Days
+
+You should start learning:
+
+Two Pointers
+
+Sliding Window
+
+Stack
+
+Recursion
+
+These are used in most coding interviews.
+
+✅ If you want, I can also show you:
+
+10 Python tricks that solve 50% of LeetCode problems
+
+How to solve any LeetCode problem step-by-step
+
+A roadmap to reach 200 solved problems
+
+These will make your learning much faster. 🚀

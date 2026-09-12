@@ -1,0 +1,403 @@
+1️⃣ Basic Programs – Learn Syntax & Input/Output
+
+Print “Hello World”
+
+Take input from user and print it #a,b=map(int,input("enter the a,b").split())
+                                   #a=int(input("enter the a:"))   
+
+Add, subtract, multiply, divide two numbers DONE
+
+Find the area of a rectangle, circle, triangle DONE
+
+Convert temperature from Celsius to Fahrenheit
+
+Swap two numbers without using a third variable
+
+Check if a number is even or odd
+
+Find the largest of three numbers
+
+Focus: print(), input(), if-else, variables, data types.
+ 
+
+'''print("Hello World")
+a=int(input("Enter the value of a:"))
+b,c=map(int,input("Enter the values of b and c:").split())
+print("a:",a)
+print("b:",b)
+print("c:",c)
+print("sum:",a+b)
+print("subtract:",b-c)
+print("multi:",a*b)
+print("div:",a/b)
+print("rem:",a%b)
+l,b,h,a,r=map(int,input("Enter the values of l,b,h,a,r:").split())
+print("Area of the rectangle:",l*b)
+print("Area of the square:",a*a)
+print("Area of the circle:",3.14*r*r)
+print("Area of the Triangle:",1/2*(a*b)*h)
+C=int(input("Enter the celsius:"))
+print("Farenheit:",(C*9/5)+32)
+F=int(input("Enter the Fahrenheit:"))
+print("Celsius:",(F-32)*5/9)
+m,n=map(int,input("Enter the values:").split())
+print("Enter the Before sotted:",m,n)
+m=m+n
+n=m-n
+m=m-n
+print("Enter the After sotted values:",m,n\)
+a,b,c=map(int,input("Enter the values a,b,c:").split())
+print("Before sotted:",a,b,c)
+a=a+b+c
+c=a-b-c
+a=a-b-c
+print("After sortted:",a,b,c)
+e=int(input("Enter the value:"))
+print("%d"%e)
+if(e%2==0):
+    print("%d is a even number"%e)
+else:
+    print("%d is an odd number"%e)
+#without using % sysmbol instead we use binary 0 and 1'''
+x,y,z=map(int,input("Enter the values:").split())
+if((x>y)&(x>z)):
+    print("%d is a greatest number" %x)
+elif((y>z)):
+    print("%d is a greatest number" %y)
+else:
+    print("%d is a greatest number" %z)
+largest=max(x,y,z)
+print("%d is greatest number"% largest)
+
+
+
+👩‍🦰Print numbers from 1 to N
+
+Print even numbers from 1 to N
+
+Multiplication table
+
+Factorial of a number
+
+Sum of first N numbers
+
+Reverse a number
+
+Check palindrome number
+
+Check prime number
+
+Print Fibonacci series
+
+
+😁Print star pattern (* triangle)
+
+Print number pattern
+
+Print pyramid pattern
+
+😊Reverse a string
+
+Check palindrome string
+
+Count vowels in a string
+
+Count words in a sentence
+
+Convert string to uppercase/lowercase
+
+
+😍Reverse a string
+
+Check palindrome string
+
+Count vowels in a string
+
+Count words in a sentence
+
+Convert string to uppercase/lowercase
+'''n,m=map(int,input("n,m").split())
+for i in range(n):
+    for j in range(i+1):
+        print("*",end=" ")
+    print()
+print("  ")
+for i in range(n):
+    for j in range(n-i):
+        print("*",end=" ")
+    print()
+print("  ")
+for i in range(n):
+    for j in range(m):
+        print("*",end=" ")
+    print()
+print()'''
+n=int(input("n:"))
+for i in range(1,n+1):
+      print("*"*i)
+print(" ")
+for i in range(n,0,-1):
+    print("*"*i)
+for i in range(n):
+    print("*"*n)
+print()
+for i in range(1,n+1):
+    print(" "*(n-i),"*"*(2*i-1))
+n:5
+*
+**
+***
+****
+*****
+ 
+*****
+****
+***
+**
+*
+*****
+*****
+*****
+*****
+*****
+
+     *
+    ***
+   *****
+  *******
+ *********
+
+n=int(input("Enter the n value:"))
+for i in range(n+1):
+    print(" "*(n-i),end=" ")
+    for j in range(i):
+        print("*",end=" ")
+    print()
+n=int(input("Enter the n value:"))
+for i in range(n):
+    for j in range(n):
+        if(i==0 or i==n-1 or j==0 or j==n-1):
+            print("*",end=" ")
+        else:
+            print(" ",end=" ")
+    print ()
+#Print number pattern
+n=int(input("Enter the n value:"))
+for i in range(1,n+1):
+    print(i,end=" ")
+
+n=int(input("Enter the n value:"))
+for i in range(1,n+1):
+    for j in range(1,n+1):
+        print(j,end=" ")
+    print()
+n=int(input("Enter the n value:"))
+for i in range(n+1):
+    for j in range(n+1):
+        print(i,end=" ")
+    print()
+n,nums=map(int,input("Enter the n value:").split())
+for i in range(n+1):
+    for j in range(n+1):
+        print(nums,end=" ")
+        nums=nums+1
+    print()
+
+n=int(input("Enter the n value:"))
+for i in range(1,n+1):
+    for j in range(1,n+1):
+        if(i==1):
+            print(j,end=" ")
+        elif(i==n):
+            print(n-j+1,end=" ")
+        elif(j==1 or j==n):
+            print(i,end=" ")
+        else:
+            print(" ",end=" ")
+    print()
+n=int(input("Enter the n value:"))
+for i in range(1,n+1):
+    for j in range(1,i+1):
+        print(j,end=" ")
+    print()
+        
+Enter the n value:5
+      
+     * 
+    * * 
+   * * * 
+  * * * * 
+ * * * * * 
+Enter the n value:5
+* * * * * 
+*       * 
+*       * 
+*       * 
+* * * * * 
+Enter the n value:5
+1 2 3 4 5 Enter the n value:5
+1 2 3 4 5 
+1 2 3 4 5 
+1 2 3 4 5 
+1 2 3 4 5 
+1 2 3 4 5 
+Enter the n value:5
+0 0 0 0 0 0 
+1 1 1 1 1 1 
+2 2 2 2 2 2 
+3 3 3 3 3 3 
+4 4 4 4 4 4 
+5 5 5 5 5 5 
+Enter the n value:5 1
+1 2 3 4 5 6 
+7 8 9 10 11 12 
+13 14 15 16 17 18 
+19 20 21 22 23 24 
+25 26 27 28 29 30 
+31 32 33 34 35 36 
+Enter the n value:5
+1 2 3 4 5 
+2       2 
+3       3 
+4       4 
+5 4 3 2 1 
+Enter the n value:5
+1 
+1 2 
+1 2 3 
+1 2 3 4 
+1 2 3 4 5 
+'''n=int(input("Enter the n value:"))
+for i in range(1,n+1):
+    print(" "*(n-i),end=" ")
+    for j in range(i):
+        print(i,end=" ")
+    print()'''
+
+Enter the n value:5
+     1 
+     2 2 
+     3 3 3 
+     4 4 4 4 
+     5 5 5 5 5 
+
+==================== RESTART: C:/Users/Mourya Srija/Downloads/add.py ===================
+Enter the n value:5
+     1 
+    2 2 
+   3 3 3 
+  4 4 4 4 
+ 5 5 5 5 5 
+
+==================== RESTART: C:/Users/Mourya Srija/Downloads/add.py ===================
+Enter the n value:5
+     0 
+    0 1 
+   0 1 2 
+  0 1 2 3 
+ 0 1 2 3 4 
+
+==================== RESTART: C:/Users/Mourya Srija/Downloads/add.py ===================
+Enter the n value:5
+     
+    
+   
+  
+ 
+
+==================== RESTART: C:/Users/Mourya Srija/Downloads/add.py ===================
+Enter the n value:5
+     1 2 3 4 5 
+    1 2 3 4 5 6 
+   1 2 3 4 5 6 7 
+  1 2 3 4 5 6 7 8 
+ 1 2 3 4 5 6 7 8 9 
+
+==================== RESTART: C:/Users/Mourya Srija/Downloads/add.py ===================
+Enter the n value:5
+     
+    1 
+   1 2 
+  1 2 3 
+ 1 2 3 4 
+
+==================== RESTART: C:/Users/Mourya Srija/Downloads/add.py ===================
+Enter the n value:5
+     
+    2 
+   3 3 
+  4 4 4 
+ 5 5 5 5 
+
+==================== RESTART: C:/Users/Mourya Srija/Downloads/add.py ===================
+Enter the n value:5
+     1 
+    2 2 
+   3 3 3 
+  4 4 4 4 
+ 5 5 5 5 5 
+
+***ARRAY FUNCTIONS
+--------------------
+from array import*
+arr=array('f',[2.5,4.8,-3.2,6.7])
+for i in arr:
+    if(i<0):
+        continue
+    print(i)
+arr1=list(map(int,input().split()))
+print(arr1)
+for i in arr1:
+    print(i)
+for i,value in enumerate(arr1):
+    print(i,value)
+arr1.append(55)#add at last of the array
+print(arr1) 
+arr1.remove(10)#remove the element
+print(arr1)
+arr1.reverse()#reverse of the array
+print(arr1)
+print(len(arr1))#len of the array
+arr1.sort()#sort in ascending order
+print(arr1)
+arr1.sort(reverse=True)#sort in descending order
+print(arr1)
+print(arr1.count(55))
+print(arr1[3])#it print the index value
+print(arr1.pop())# it deletes the last element and returns the deleted value
+del arr1[3]#it removes by the index
+print(arr1)
+@@OUTPUT
+--------------
+10 22 35 5 26 55 85 96
+[10, 22, 35, 5, 26, 55, 85, 96]
+10
+22
+35
+5
+26
+55
+85
+96
+0 10
+1 22
+2 35
+3 5
+4 26
+5 55
+6 85
+7 96
+[10, 22, 35, 5, 26, 55, 85, 96, 55]
+[22, 35, 5, 26, 55, 85, 96, 55]
+[55, 96, 85, 55, 26, 5, 35, 22]
+8
+[5, 22, 26, 35, 55, 55, 85, 96]
+[96, 85, 55, 55, 35, 26, 22, 5]
+2
+55
+5
+[96, 85, 55, 35, 26, 22]
+
+
+
+

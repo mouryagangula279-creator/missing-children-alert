@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Alerts | SafeTrace</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+
+        /* HEADER */
+
+        header {
+            background: #123b5d;
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: white;
+            color: #123b5d;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .logo h2 {
+            margin: 0;
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+
+            border: 1px solid white;
+
+            padding: 9px 16px;
+
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #123b5d;
+        }
+
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+
+            margin: 35px auto;
+        }
+
+
+        /* PAGE HEADER */
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .page-title h1 {
+            color: #123b5d;
+            margin-bottom: 6px;
+        }
+
+        .page-title p {
+            color: #666;
+            margin-top: 0;
+        }
+
+
+        /* ALERT COUNT */
+
+        .alert-count {
+            background: #123b5d;
+            color: white;
+
+            padding: 10px 18px;
+
+            border-radius: 20px;
+
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+
+        /* MARK ALL BUTTON */
+
+        .mark-all-btn {
+            background: #123b5d;
+            color: white;
+
+            border: none;
+
+            padding: 11px 18px;
+
+            border-radius: 5px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+        .mark-all-btn:hover {
+            opacity: 0.9;
+        }
+
+
+        /* ALERT CARD */
+
+        .alerts-card {
+            background: white;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 2px 10px
+                rgba(0, 0, 0, 0.08);
+
+            overflow: hidden;
+        }
+
+
+        /* ALERT ITEM */
+
+        .alert-item {
+            padding: 20px;
+
+            border-bottom:
+                1px solid #eee;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .alert-item:last-child {
+            border-bottom: none;
+        }
+
+
+        /* UNREAD ALERT */
+
+        .alert-item.unread {
+            background: #eef5fa;
+
+            border-left:
+                5px solid #123b5d;
+        }
+
+
+        /* ALERT CONTENT */
+
+        .alert-content {
+            flex: 1;
+        }
+
+        .alert-message {
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            margin-bottom: 7px;
+        }
+
+        .alert-date {
+            color: #777;
+
+            font-size: 12px;
+        }
+
+
+        /* ALERT TYPE */
+
+        .alert-type {
+            display: inline-block;
+
+            background: #e8eef3;
+
+            color: #123b5d;
+
+            padding: 5px 10px;
+
+            border-radius: 15px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* MARK READ BUTTON */
+
+        .mark-read-btn {
+            background: #123b5d;
+            color: white;
+
+            border: none;
+
+            padding: 9px 14px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            white-space: nowrap;
+        }
+
+        .mark-read-btn:hover {
+            opacity: 0.9;
+        }
+
+
+        /* READ LABEL */
+
+        .read-label {
+            color: #777;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        /* NO ALERTS */
+
+        .no-alerts {
+            padding: 60px;
+
+            text-align: center;
+
+            color: #666;
+        }
+
+
+        /* MESSAGE */
+
+        .message {
+            margin-bottom: 20px;
+
+            padding: 14px;
+
+            border-radius: 6px;
+
+            background: #e8f5e9;
+
+            color: #2e7d32;
+        }
+        .mark-all-btn {
+            background: #123b5d;
+            color: white;
+
+            border: none;
+
+            padding: 11px 18px;
+
+            border-radius: 5px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+        .mark-all-btn:hover {
+            opacity: 0.9;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 50px;
+
+            background: #123b5d;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 18px;
+
+            font-size: 13px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .page-header {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+            }
+
+            .alert-item {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .mark-read-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            ST
+        </div>
+
+        <div>
+
+            <h2>SafeTrace</h2>
+
+            <small>
+                Missing Child Alert and Response System
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <a href="{% url 'dashboard' %}"
+       class="back-btn">
+
+        Back to Dashboard
+
+    </a>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <!-- SUCCESS / ERROR MESSAGES -->
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="message">
+
+                {{ message }}
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-header">
+
+        <div class="page-title">
+
+            <h1>
+                System Alerts
+            </h1>
+
+            <p>
+                Notifications related to missing-child cases
+                and case status updates.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <span class="alert-count">
+
+                {{ alerts|length }} Alerts
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- MARK ALL READ -->
+
+    {% if alerts %}
+
+        <form method="POST"
+              action="{% url 'mark_all_alerts_read' %}"
+              style="margin-bottom: 20px;">
+
+            {% csrf_token %}
+
+            <button
+                type="submit"
+                class="mark-all-btn"
+            >
+
+                Mark All as Read
+
+            </button>
+
+        </form>
+
+    {% endif %}
+
+
+    <!-- ALERT LIST -->
+
+    <div class="alerts-card">
+
+
+        {% if alerts %}
+
+
+            {% for alert in alerts %}
+
+
+                <div class="alert-item
+                    {% if not alert.is_read %}
+                        unread
+                    {% endif %}
+                ">
+
+
+                    <div class="alert-content">
+
+
+                        <div class="alert-type">
+
+                            {{ alert.get_alert_type_display }}
+
+                        </div>
+
+
+                        <div class="alert-message">
+
+                            {{ alert.message }}
+
+                        </div>
+
+
+                        <div class="alert-date">
+
+                            {{ alert.created_at|date:"d M Y, h:i A" }}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div>
+
+
+                        {% if not alert.is_read %}
+
+
+                            <form
+                                method="POST"
+                                action="{% url 'mark_alert_read' alert.id %}"
+                            >
+
+                                {% csrf_token %}
+
+
+                                <button
+                                    type="submit"
+                                    class="mark-read-btn"
+                                >
+
+                                    Mark as Read
+
+                                </button>
+
+
+                            </form>
+
+
+                        {% else %}
+
+
+                            <span class="read-label">
+
+                                ✓ Read
+
+                            </span>
+
+
+                        {% endif %}
+
+
+                    </div>
+
+
+                </div>
+
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <div class="no-alerts">
+
+                <h3>
+                    No Alerts Available
+                </h3>
+
+                <p>
+                    System alerts will appear here when
+                    new cases are registered or updated.
+                </p>
+
+            </div>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+</div>
+
+
+
+<footer>
+
+    SafeTrace — Missing Child Alert and Response System
+
+    <br>
+
+    Academic Project Prototype
+
+</footer>
+
+
+</body>
+
+</html>

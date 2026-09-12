@@ -1,0 +1,294 @@
+oal is to make you capable of:
+
+Writing solid Python programs
+Solving DSA problems confidently
+Understanding databases and SQL
+Building small backend/data projects
+Being ready for internships/interviews or deeper specialization
+
+Use:
+
+Python Official Docs
+LeetCode
+HackerRank SQL
+PostgreSQL Docs
+SQLite Tutorial
+Daily Structure (6 Hours)
+Hour 1.5 — Python Core
+
+Learn concepts + code examples.
+
+Hour 2 — DSA
+
+Concepts + 3–5 problems daily.
+
+Hour 1 — SQL & Databases
+
+Queries + schema design.
+
+Hour 1 — Practice / Mini Project
+
+Build something practical.
+
+Hour 0.5 — Revision
+
+Notes + recap + error review.
+
+Week 1 — Python Foundations + Basic SQL
+Python Topics
+Variables
+Data types
+Input/output
+Operators
+Strings
+Lists
+Tuples
+Dictionaries
+Sets
+Conditions
+Loops
+Functions
+DSA
+Time complexity
+Arrays
+Strings
+Basic recursion
+SQL
+What is DBMS/RDBMS
+Tables
+CREATE TABLE
+INSERT
+SELECT
+WHERE
+ORDER BY
+LIMIT
+Practice
+
+Python:
+
+Calculator
+Number guessing game
+String utilities
+
+SQL:
+
+Create student database
+Query filtering exercises
+DSA Problems
+
+Target:
+
+3 easy array/string problems daily
+Week 2 — Intermediate Python + Searching/Sorting
+Python
+Modules
+File handling
+Exception handling
+List comprehensions
+Lambda/map/filter
+Virtual environments
+Pip
+DSA
+Binary search
+Sorting algorithms
+Bubble
+Selection
+Insertion
+Merge sort
+Quick sort
+SQL
+Aggregate functions
+GROUP BY
+HAVING
+Joins basics
+Project
+Expense tracker using files
+Student marks analyzer
+Important Concept
+
+Binary search:
+
+T(n)=T(n/2)+1
+
+Time complexity:
+
+O(logn)
+
+Week 3 — OOP + Linked Lists & Stacks
+Python
+Classes
+Objects
+Inheritance
+Encapsulation
+Polymorphism
+Magic methods
+DSA
+Linked lists
+Stack
+Queue
+Deque
+SQL/DB
+Inner join
+Left join
+Right join
+Foreign keys
+Relationships
+Project
+Library management system
+CLI contact manager
+Practice
+Reverse linked list
+Valid parentheses
+Stack implementation
+Week 4 — Advanced DSA + Database Design
+Python
+Iterators
+Generators
+Decorators
+JSON handling
+APIs basics
+DSA
+Trees
+Binary trees
+BST
+Traversals
+Heap basics
+SQL/DB
+Normalization
+Indexes
+Constraints
+Transactions
+Project
+Task manager with SQLite
+
+Use:
+
+SQLite Browser
+Week 5 — Hashing + Recursion + Real Databases
+Python
+Collections module
+Datetime
+Regex
+Logging
+DSA
+Hash maps
+Sets
+Recursion deep dive
+Backtracking basics
+SQL/DB
+PostgreSQL setup
+Subqueries
+CASE
+Views
+Project
+Inventory management DB
+Important Formula
+
+Recursion relation example:
+
+T(n)=T(n−1)+1
+
+Week 6 — Graphs + Interview Preparation
+Python
+Practice coding style
+Problem-solving patterns
+Debugging
+DSA
+Graphs
+BFS
+DFS
+Sliding window
+Two pointers
+SQL
+Complex joins
+Optimization basics
+Query performance
+Practice
+
+Daily:
+
+5 LeetCode problems
+10 SQL queries
+
+Recommended:
+
+NeetCode
+Week 7 — Projects + Revision + Mock Interviews
+Build 1 Major Project
+
+Choose one:
+
+Student management system
+Expense tracker with SQL
+Notes app
+Inventory system
+Mini e-commerce backend
+
+Features:
+
+Python backend
+SQLite/PostgreSQL database
+CRUD operations
+Search/filtering
+Final DSA Revision
+
+Revise:
+
+Arrays
+Linked lists
+Trees
+Hashing
+Graphs
+Recursion
+SQL Revision
+
+Practice:
+
+50–100 queries total
+Best Learning Resources
+Python
+freeCodeCamp Python Course
+Automate the Boring Stuff
+DSA
+GeeksforGeeks DSA
+VisuAlgo
+SQL
+SQLBolt
+Mode SQL Tutorial
+What You Should Achieve After 7 Weeks
+
+You should be able to:
+
+Write medium-level Python programs
+Solve easy-to-medium DSA problems
+Design relational databases
+Write complex SQL queries
+Build CLI/database projects
+Start backend development or interview prep
+Recommended Setup
+
+Install:
+
+Python
+VS Code
+PostgreSQL
+Git
+Weekly Success Rules
+Code every single day
+Don’t just watch tutorials
+Solve at least:
+100 DSA problems
+100 SQL queries
+Maintain handwritten or digital notes
+Build projects alongside learning
+Revise every Sunday
+
+If you want, I can also create:
+
+A day-by-day timetable for all 49 days
+A beginner-to-advanced DSA sheet
+A Python + SQL project roadmap
+A placement/interview preparation version
+A Notion-style tracker template
+
+We use cookies

@@ -1,0 +1,19 @@
+1️⃣ Basic Programs – Learn Syntax & Input/Output
+
+Print “Hello World”
+
+Take input from user and print it
+
+Add, subtract, multiply, divide two numbers
+
+Find the area of a rectangle, circle, triangle
+
+Convert temperature from Celsius to Fahrenheit
+
+Swap two numbers without using a third variable
+
+Check if a number is even or odd
+
+Find the largest of three numbers
+
+Focus: print(), input(), if-else, variables, data types.

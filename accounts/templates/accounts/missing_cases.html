@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Missing Cases | SafeTrace</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #123b5d;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: white;
+            color: #123b5d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logo h2 {
+            margin: 0;
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            border: 1px solid white;
+            padding: 9px 16px;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #123b5d;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        .page-title h1 {
+            color: #123b5d;
+            margin-bottom: 6px;
+        }
+
+        .page-title p {
+            color: #666;
+        }
+
+
+        /* SEARCH AND FILTER */
+
+        .filter-card {
+            background: white;
+            margin-top: 25px;
+            padding: 22px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .filter-form {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto auto;
+            gap: 12px;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .filter-group label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #123b5d;
+        }
+
+        .filter-group input,
+        .filter-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .filter-btn {
+            background: #123b5d;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover {
+            opacity: 0.9;
+        }
+
+        .clear-btn {
+            background: #e8eef3;
+            color: #123b5d;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+
+        /* CASE TABLE */
+
+        .table-card {
+            margin-top: 25px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #123b5d;
+            color: white;
+            padding: 14px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background: #f7f9fb;
+        }
+
+
+        /* PHOTO */
+
+        .child-photo {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #e8eef3;
+        }
+
+        .no-photo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: #e8eef3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #666;
+            text-align: center;
+        }
+
+
+        /* STATUS */
+
+        .status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 15px;
+            background: #e8eef3;
+            color: #123b5d;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+
+        /* VIEW BUTTON */
+
+        .view-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #123b5d;
+            color: white;
+            padding: 8px 13px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        .view-btn:hover {
+            opacity: 0.9;
+        }
+
+
+        /* NO CASES */
+
+        .no-cases {
+            padding: 50px;
+            text-align: center;
+            color: #666;
+        }
+
+
+        footer {
+            margin-top: 50px;
+            background: #123b5d;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            font-size: 13px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .filter-form {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .filter-form {
+                grid-template-columns: 1fr;
+            }
+
+            .table-card {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 850px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            ST
+        </div>
+
+        <div>
+
+            <h2>SafeTrace</h2>
+
+            <small>
+                Missing Child Alert and Response System
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <a href="{% url 'dashboard' %}" class="back-btn">
+        Back to Dashboard
+    </a>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <div class="page-title">
+
+        <h1>Missing Child Cases</h1>
+
+        <p>
+            Search, filter and view registered missing-child cases.
+        </p>
+
+    </div>
+
+
+
+    <!-- SEARCH AND FILTER -->
+
+    <div class="filter-card">
+
+        <form method="GET" class="filter-form">
+
+
+            <div class="filter-group">
+
+                <label>Search</label>
+
+                <input
+                    type="text"
+                    name="search"
+                    value="{{ search_query }}"
+                    placeholder="Child name or case number"
+                >
+
+            </div>
+
+
+
+            <div class="filter-group">
+
+                <label>Status</label>
+
+                <select name="status">
+
+                    <option value="">
+                        All Statuses
+                    </option>
+
+
+                    <option value="REPORTED"
+                        {% if selected_status == "REPORTED" %}
+                            selected
+                        {% endif %}
+                    >
+                        Reported
+                    </option>
+
+
+                    <option value="UNDER_REVIEW"
+                        {% if selected_status == "UNDER_REVIEW" %}
+                            selected
+                        {% endif %}
+                    >
+                        Under Review
+                    </option>
+
+
+                    <option value="ACTIVE"
+                        {% if selected_status == "ACTIVE" %}
+                            selected
+                        {% endif %}
+                    >
+                        Active
+                    </option>
+
+
+                    <option value="RESOLVED"
+                        {% if selected_status == "RESOLVED" %}
+                            selected
+                        {% endif %}
+                    >
+                        Resolved
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="filter-group">
+
+                <label>Gender</label>
+
+                <select name="gender">
+
+                    <option value="">
+                        All Genders
+                    </option>
+
+
+                    <option value="MALE"
+                        {% if selected_gender == "MALE" %}
+                            selected
+                        {% endif %}
+                    >
+                        Male
+                    </option>
+
+
+                    <option value="FEMALE"
+                        {% if selected_gender == "FEMALE" %}
+                            selected
+                        {% endif %}
+                    >
+                        Female
+                    </option>
+
+
+                    <option value="OTHER"
+                        {% if selected_gender == "OTHER" %}
+                            selected
+                        {% endif %}
+                    >
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <button type="submit" class="filter-btn">
+                Search
+            </button>
+
+
+
+            <a href="{% url 'missing_cases' %}" class="clear-btn">
+                Clear
+            </a>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- CASES TABLE -->
+
+    <div class="table-card">
+
+
+        {% if cases %}
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Photo</th>
+                    <th>Case Number</th>
+                    <th>Child Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Last Seen Location</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for case in cases %}
+
+
+                <tr>
+
+
+                    <td>
+
+                        {% if case.photo %}
+
+                            <img
+                                src="{{ case.photo.url }}"
+                                alt="{{ case.child_name }}"
+                                class="child-photo"
+                            >
+
+                        {% else %}
+
+                            <div class="no-photo">
+                                No Photo
+                            </div>
+
+                        {% endif %}
+
+                    </td>
+
+
+
+                    <td>
+                        {{ case.case_number }}
+                    </td>
+
+
+                    <td>
+                        {{ case.child_name }}
+                    </td>
+
+
+                    <td>
+                        {{ case.age }}
+                    </td>
+
+
+                    <td>
+                        {{ case.get_gender_display }}
+                    </td>
+
+
+                    <td>
+                        {{ case.location_last_seen }}
+                    </td>
+
+
+                    <td>
+
+                        <span class="status">
+                            {{ case.get_status_display }}
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <a
+                            href="{% url 'case_detail' case.id %}"
+                            class="view-btn"
+                        >
+                            View
+                        </a>
+
+                    </td>
+
+
+                </tr>
+
+
+                {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+
+
+
+        {% else %}
+
+
+        <div class="no-cases">
+
+            <h3>No Cases Found</h3>
+
+            <p>
+                No missing-child cases match your search or filter.
+            </p>
+
+        </div>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+</div>
+
+
+
+<footer>
+
+    SafeTrace — Missing Child Alert and Response System
+
+    <br>
+
+    Academic Project Prototype
+
+</footer>
+
+
+</body>
+
+</html>

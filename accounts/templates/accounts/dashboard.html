@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SafeTrace | Dashboard</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+
+        /* HEADER */
+
+        .header {
+            background: #17365d;
+            color: white;
+            height: 78px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 45px;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .logo {
+            width: 45px;
+            height: 45px;
+
+            border: 2px solid white;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+
+        .brand h1 {
+            font-size: 24px;
+            letter-spacing: 0.5px;
+        }
+
+
+        .brand p {
+            font-size: 12px;
+            margin-top: 3px;
+            opacity: 0.9;
+        }
+
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+
+        .user-info {
+            text-align: right;
+        }
+
+
+        .user-info strong {
+            display: block;
+            font-size: 14px;
+        }
+
+
+        .user-info span {
+            font-size: 12px;
+            opacity: 0.85;
+        }
+
+
+        .logout {
+            text-decoration: none;
+
+            background: white;
+            color: #17365d;
+
+            padding: 9px 18px;
+
+            border-radius: 5px;
+
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+
+        .logout:hover {
+            background: #e9eef5;
+        }
+
+
+        /* NAVIGATION */
+
+        .navigation {
+            background: white;
+
+            border-bottom: 1px solid #d9dee5;
+
+            padding: 0 45px;
+        }
+
+
+        .navigation ul {
+            list-style: none;
+
+            display: flex;
+
+            gap: 5px;
+        }
+
+
+        .navigation li a {
+            display: block;
+
+            padding: 16px 20px;
+
+            text-decoration: none;
+
+            color: #4b5563;
+
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+
+        .navigation li a:hover,
+        .navigation li a.active {
+            color: #17365d;
+            border-bottom: 3px solid #17365d;
+        }
+
+
+        /* MAIN CONTENT */
+
+        .container {
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding: 35px 25px;
+        }
+
+
+        .page-heading {
+            margin-bottom: 25px;
+        }
+
+
+        .page-heading h2 {
+            font-size: 25px;
+
+            color: #17365d;
+
+            margin-bottom: 6px;
+        }
+
+
+        .page-heading p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+
+        /* ROLE BANNER */
+
+        .role-banner {
+            background: white;
+
+            border-left: 5px solid #17365d;
+
+            padding: 18px 22px;
+
+            margin-bottom: 25px;
+
+            border-radius: 5px;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .role-banner strong {
+            color: #17365d;
+        }
+
+
+        .role-banner span {
+            color: #667085;
+            font-size: 14px;
+        }
+
+
+        /* STAT CARDS */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .stat-card {
+            background: white;
+
+            border-radius: 7px;
+
+            padding: 22px;
+
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+
+            border: 1px solid #e5e7eb;
+
+            text-decoration: none;
+
+            display: block;
+
+            transition: 0.2s;
+
+            color: inherit;
+        }
+
+
+        .stat-card:hover {
+            box-shadow: 0 5px 16px rgba(0, 0, 0, 0.10);
+
+            transform: translateY(-3px);
+
+            border-color: #17365d;
+        }
+
+
+        .stat-card .label {
+            font-size: 13px;
+
+            color: #667085;
+
+            margin-bottom: 10px;
+        }
+
+
+        .stat-card .number {
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: #17365d;
+        }
+
+
+        .stat-card .description {
+            margin-top: 7px;
+
+            font-size: 11px;
+
+            color: #98a2b3;
+        }
+
+
+        /* ACTION SECTION */
+
+        .section-title {
+            font-size: 19px;
+
+            color: #17365d;
+
+            margin-bottom: 15px;
+        }
+
+
+        .actions {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .action-card {
+            background: white;
+
+            border: 1px solid #e1e5ea;
+
+            border-radius: 7px;
+
+            padding: 24px;
+
+            transition: 0.2s;
+        }
+
+
+        .action-card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+            transform: translateY(-2px);
+        }
+
+
+        .action-icon {
+            width: 42px;
+            height: 42px;
+
+            background: #eef4fb;
+
+            color: #17365d;
+
+            border-radius: 6px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .action-card h3 {
+            font-size: 16px;
+
+            color: #17365d;
+
+            margin-bottom: 8px;
+        }
+
+
+        .action-card p {
+            color: #667085;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            margin-bottom: 15px;
+        }
+
+
+        .action-btn {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #17365d;
+
+            color: white;
+
+            padding: 9px 15px;
+
+            border-radius: 4px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+
+        .action-btn:hover {
+            background: #102a49;
+        }
+
+
+        /* RECENT CASES */
+
+        .recent-cases {
+            background: white;
+
+            border: 1px solid #e1e5ea;
+
+            border-radius: 7px;
+
+            overflow: hidden;
+
+            margin-bottom: 30px;
+        }
+
+
+        .recent-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 20px 25px;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+
+        .recent-header h3 {
+            color: #17365d;
+
+            font-size: 18px;
+        }
+
+
+        .view-all {
+            text-decoration: none;
+
+            color: #17365d;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        .case-table {
+            width: 100%;
+
+            border-collapse: collapse;
+        }
+
+
+        .case-table th {
+            text-align: left;
+
+            padding: 14px 20px;
+
+            background: #f7f9fb;
+
+            color: #667085;
+
+            font-size: 12px;
+        }
+
+
+        .case-table td {
+            padding: 15px 20px;
+
+            border-top: 1px solid #e5e7eb;
+
+            font-size: 13px;
+        }
+
+
+        .case-table tr:hover {
+            background: #f9fafb;
+        }
+
+
+        .case-link {
+            color: #17365d;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        .status-badge {
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            background: #eef4fb;
+
+            color: #17365d;
+
+            border-radius: 15px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+
+        .no-cases {
+            padding: 35px;
+
+            text-align: center;
+
+            color: #667085;
+        }
+
+
+        /* INFORMATION PANEL */
+
+        .information {
+            background: white;
+
+            border: 1px solid #e1e5ea;
+
+            border-radius: 7px;
+
+            padding: 25px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .information h3 {
+            color: #17365d;
+
+            font-size: 18px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .information p {
+            color: #667085;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* ALERT BADGE */
+
+        .alerts-link {
+            position: relative;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .alert-badge {
+            background: #b3261e;
+
+            color: white;
+
+            min-width: 20px;
+
+            height: 20px;
+
+            padding: 0 6px;
+
+            border-radius: 50%;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+
+        /* FOOTER */
+
+        .footer {
+            background: #17365d;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 22px;
+
+            margin-top: 30px;
+        }
+
+
+        .footer p {
+            font-size: 12px;
+
+            opacity: 0.9;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1100px) {
+
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 900px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            .actions {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .header {
+                padding: 0 20px;
+            }
+
+
+            .navigation {
+                padding: 0 20px;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .recent-cases {
+                overflow-x: auto;
+            }
+
+
+            .case-table {
+                min-width: 650px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .stats,
+            .actions {
+                grid-template-columns: 1fr;
+            }
+
+
+            .user-info {
+                display: none;
+            }
+
+
+            .navigation ul {
+                overflow-x: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="logo">
+            ST
+        </div>
+
+
+        <div>
+
+            <h1>SafeTrace</h1>
+
+            <p>
+                Missing Child Alert and Response System
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="user-section">
+
+        <div class="user-info">
+
+            <strong>
+                {{ request.user.username }}
+            </strong>
+
+
+            {% if profile %}
+
+                <span>
+                    {{ profile.get_role_display }}
+                </span>
+
+            {% else %}
+
+                <span>
+                    Administrator
+                </span>
+
+            {% endif %}
+
+        </div>
+
+
+        <a
+            href="{% url 'logout' %}"
+            class="logout"
+        >
+            Logout
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav class="navigation">
+
+    <ul>
+
+        <li>
+
+            <a
+                href="{% url 'dashboard' %}"
+                class="active"
+            >
+                Dashboard
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="{% url 'missing_cases' %}">
+
+                Missing Cases
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a
+                href="{% url 'alerts' %}"
+                class="alerts-link"
+            >
+
+                🔔 Alerts
+
+
+                {% if unread_alerts > 0 %}
+
+                    <span class="alert-badge">
+
+                        {{ unread_alerts }}
+
+                    </span>
+
+                {% endif %}
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="{% url 'reports' %}">
+
+                Reports
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- MAIN CONTENT -->
+
+<main class="container">
+
+
+    <!-- PAGE HEADING -->
+
+    <div class="page-heading">
+
+        <h2>
+            Dashboard
+        </h2>
+
+
+        <p>
+            Overview of SafeTrace missing-child response activities.
+        </p>
+
+    </div>
+
+
+    <!-- ROLE BANNER -->
+
+    <div class="role-banner">
+
+
+        {% if profile %}
+
+            <strong>
+                Authorized Role:
+            </strong>
+
+
+            <span>
+
+                {{ profile.get_role_display }}
+
+                {% if profile.area %}
+
+                    &nbsp; | &nbsp;
+
+                    Area: {{ profile.area }}
+
+                {% endif %}
+
+            </span>
+
+
+        {% else %}
+
+            <strong>
+                System Administrator
+            </strong>
+
+
+            <span>
+
+                &nbsp; | &nbsp;
+
+                Administrative access
+
+            </span>
+
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <h3 class="section-title">
+        Case Overview
+    </h3>
+
+
+    <section class="stats">
+
+
+        <!-- TOTAL CASES -->
+
+        <a
+            href="{% url 'missing_cases' %}"
+            class="stat-card"
+        >
+
+            <div class="label">
+                Total Reported Cases
+            </div>
+
+
+            <div class="number">
+                {{ total_cases }}
+            </div>
+
+
+            <div class="description">
+                View all registered cases
+            </div>
+
+        </a>
+
+
+        <!-- ACTIVE CASES -->
+
+        <a
+            href="{% url 'missing_cases' %}?status=ACTIVE"
+            class="stat-card"
+        >
+
+            <div class="label">
+                Active Missing Cases
+            </div>
+
+
+            <div class="number">
+                {{ active_cases }}
+            </div>
+
+
+            <div class="description">
+                View currently active cases
+            </div>
+
+        </a>
+
+
+        <!-- ALERTS -->
+
+        <a
+            href="{% url 'alerts' %}"
+            class="stat-card"
+        >
+
+            <div class="label">
+                Alerts Issued
+            </div>
+
+
+            <div class="number">
+                {{ total_alerts }}
+            </div>
+
+
+            <div class="description">
+                View all system alerts
+            </div>
+
+        </a>
+
+
+        <!-- UNDER REVIEW -->
+
+        <a
+            href="{% url 'missing_cases' %}?status=UNDER_REVIEW"
+            class="stat-card"
+        >
+
+            <div class="label">
+                Cases Under Review
+            </div>
+
+
+            <div class="number">
+                {{ under_review }}
+            </div>
+
+
+            <div class="description">
+                View reports awaiting verification
+            </div>
+
+        </a>
+
+
+        <!-- RESOLVED -->
+
+        <a
+            href="{% url 'missing_cases' %}?status=RESOLVED"
+            class="stat-card"
+        >
+
+            <div class="label">
+                Cases Resolved
+            </div>
+
+
+            <div class="number">
+                {{ resolved_cases }}
+            </div>
+
+
+            <div class="description">
+                View successfully resolved cases
+            </div>
+
+        </a>
+
+
+    </section>
+
+
+    <!-- QUICK ACTIONS -->
+
+    <h3 class="section-title">
+        Quick Actions
+    </h3>
+
+
+    <section class="actions">
+
+
+        {% if profile and profile.role == "POLICE" %}
+
+
+            <div class="action-card">
+
+                <div class="action-icon">
+                    +
+                </div>
+
+
+                <h3>
+                    Register Missing Child
+                </h3>
+
+
+                <p>
+                    Create a new missing-child case and record the required information.
+                </p>
+
+
+                <a
+                    href="{% url 'register_missing_child' %}"
+                    class="action-btn"
+                >
+                    Register Case
+                </a>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <div class="action-icon">
+                    🔍
+                </div>
+
+
+                <h3>
+                    Search Missing Cases
+                </h3>
+
+
+                <p>
+                    View and review registered missing-child cases.
+                </p>
+
+
+                <a
+                    href="{% url 'missing_cases' %}"
+                    class="action-btn"
+                >
+                    View Cases
+                </a>
+
+            </div>
+
+
+        {% elif profile and profile.role == "SACHIVALAYAM" %}
+
+
+            <div class="action-card">
+
+                <div class="action-icon">
+                    +
+                </div>
+
+
+                <h3>
+                    Register Missing Child
+                </h3>
+
+
+                <p>
+                    Submit a missing-child report with the required information.
+                </p>
+
+
+                <a
+                    href="{% url 'register_missing_child' %}"
+                    class="action-btn"
+                >
+                    Register Case
+                </a>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <div class="action-icon">
+                    📋
+                </div>
+
+
+                <h3>
+                    View Missing Cases
+                </h3>
+
+
+                <p>
+                    View registered missing-child cases in the system.
+                </p>
+
+
+                <a
+                    href="{% url 'missing_cases' %}"
+                    class="action-btn"
+                >
+                    View Cases
+                </a>
+
+            </div>
+
+
+        {% else %}
+
+
+            <div class="action-card">
+
+                <div class="action-icon">
+                    📊
+                </div>
+
+
+                <h3>
+                    System Administration
+                </h3>
+
+
+                <p>
+                    Manage SafeTrace users, cases and system information.
+                </p>
+
+
+                <a
+                    href="/admin/"
+                    class="action-btn"
+                >
+                    Open Admin
+                </a>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <div class="action-icon">
+                    📊
+                </div>
+
+
+                <h3>
+                    View Reports
+                </h3>
+
+
+                <p>
+                    View statistics and summary reports of missing-child cases.
+                </p>
+
+
+                <a
+                    href="{% url 'reports' %}"
+                    class="action-btn"
+                >
+                    View Reports
+                </a>
+
+            </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+    <!-- RECENT CASES -->
+
+    <h3 class="section-title">
+        Recent Missing Cases
+    </h3>
+
+
+    <section class="recent-cases">
+
+
+        <div class="recent-header">
+
+            <h3>
+                Latest Registered Cases
+            </h3>
+
+
+            <a
+                href="{% url 'missing_cases' %}"
+                class="view-all"
+            >
+                View All Cases →
+            </a>
+
+        </div>
+
+
+        {% if recent_cases %}
+
+
+            <table class="case-table">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Case Number
+                        </th>
+
+
+                        <th>
+                            Child Name
+                        </th>
+
+
+                        <th>
+                            Age
+                        </th>
+
+
+                        <th>
+                            Last Seen Location
+                        </th>
+
+
+                        <th>
+                            Status
+                        </th>
+
+
+                        <th>
+                            View
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for case in recent_cases %}
+
+
+                        <tr>
+
+
+                            <td>
+                                {{ case.case_number }}
+                            </td>
+
+
+                            <td>
+                                {{ case.child_name }}
+                            </td>
+
+
+                            <td>
+                                {{ case.age }}
+                            </td>
+
+
+                            <td>
+                                {{ case.location_last_seen }}
+                            </td>
+
+
+                            <td>
+
+                                <span class="status-badge">
+
+                                    {{ case.get_status_display }}
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <a
+                                    href="{% url 'case_detail' case.id %}"
+                                    class="case-link"
+                                >
+                                    View Details
+                                </a>
+
+                            </td>
+
+
+                        </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+
+            </table>
+
+
+        {% else %}
+
+
+            <div class="no-cases">
+
+                <p>
+                    No missing-child cases have been registered yet.
+                </p>
+
+            </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+    <!-- SYSTEM INFORMATION -->
+
+    <section class="information">
+
+
+        <h3>
+            SafeTrace System
+        </h3>
+
+
+        <p>
+            SafeTrace is an academic project prototype designed to support
+            coordinated reporting, monitoring and response for missing-child
+            cases. Authorized personnel can use the system to record case
+            information, monitor alerts and support response activities.
+        </p>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+
+    <p>
+        SafeTrace — Missing Child Alert and Response System
+    </p>
+
+
+    <p>
+        Academic Project Prototype
+    </p>
+
+
+</footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Reports | SafeTrace</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #123b5d;
+            color: white;
+            padding: 18px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: white;
+            color: #123b5d;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .logo h2 {
+            margin: 0;
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+
+            border: 1px solid white;
+
+            padding: 9px 16px;
+
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #123b5d;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 35px auto;
+        }
+
+        .page-title h1 {
+            color: #123b5d;
+            margin-bottom: 5px;
+        }
+
+        .page-title p {
+            color: #666;
+        }
+
+
+        /* STATISTICS */
+
+        .stats {
+            margin-top: 30px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .stat-card {
+            background: white;
+
+            padding: 22px;
+
+            border-radius: 8px;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .stat-number {
+            margin-top: 10px;
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            color: #123b5d;
+        }
+
+
+        /* CHART */
+
+        .chart-card {
+            margin-top: 30px;
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 8px;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .chart-card h2 {
+            color: #123b5d;
+
+            margin-top: 0;
+
+            margin-bottom: 8px;
+        }
+
+        .chart-card p {
+            color: #666;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+        .chart-row {
+            margin-bottom: 22px;
+        }
+
+        .chart-label {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .chart-bar-background {
+            width: 100%;
+
+            height: 25px;
+
+            background: #e8eef3;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 100%;
+
+            background: #123b5d;
+
+            border-radius: 15px;
+
+            min-width: 2px;
+
+            transition: width 0.5s ease;
+        }
+
+
+        /* SUMMARY */
+
+        .summary-card {
+            margin-top: 30px;
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 8px;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .summary-card h2 {
+            color: #123b5d;
+
+            margin-top: 0;
+
+            border-bottom: 1px solid #ddd;
+
+            padding-bottom: 12px;
+        }
+
+        .summary-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+
+        /* RECENT CASES REPORT */
+
+        .recent-report-card {
+            margin-top: 30px;
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 8px;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .recent-report-card h2 {
+            color: #123b5d;
+
+            margin-top: 0;
+
+            margin-bottom: 20px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .recent-table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 800px;
+        }
+
+        .recent-table th {
+            background: #f1f5f9;
+
+            color: #123b5d;
+
+            text-align: left;
+
+            padding: 14px;
+
+            font-size: 13px;
+        }
+
+        .recent-table td {
+            padding: 14px;
+
+            border-bottom: 1px solid #e5e7eb;
+
+            font-size: 13px;
+        }
+
+        .recent-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .status-badge {
+            display: inline-block;
+
+            background: #e8eef5;
+
+            color: #123b5d;
+
+            padding: 5px 10px;
+
+            border-radius: 15px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .view-case-btn {
+            text-decoration: none;
+
+            background: #123b5d;
+
+            color: white;
+
+            padding: 7px 12px;
+
+            border-radius: 4px;
+
+            font-size: 12px;
+        }
+
+        .view-case-btn:hover {
+            background: #0d2d48;
+        }
+
+        .no-cases {
+            text-align: center;
+
+            color: #666;
+
+            padding: 25px;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 50px;
+
+            background: #123b5d;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 18px;
+
+            font-size: 13px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+        }
+        .title-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .download-btn {
+            background: #123b5d;
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px 18px;
+
+            border-radius: 5px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            background: #0d2d47;
+        }
+
+        @media (max-width: 600px) {
+
+            .title-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            ST
+        </div>
+
+        <div>
+
+            <h2>SafeTrace</h2>
+
+            <small>
+                Missing Child Alert and Response System
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <a href="{% url 'dashboard' %}" class="back-btn">
+        Back to Dashboard
+    </a>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <div class="title-header">
+        <div>
+
+            <h1>System Reports</h1>
+
+            <p>
+                Overview of missing-child cases and alerts in SafeTrace.
+            </p>
+
+        </div>
+        <a
+            href="{% url 'download_report' %}"
+            class="download-btn"
+        >
+            Download Report
+        </a>
+    </div>
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+
+        <!-- TOTAL CASES -->
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Total Cases
+            </div>
+
+            <div class="stat-number">
+                {{ total_cases }}
+            </div>
+
+        </div>
+
+
+        <!-- REPORTED CASES -->
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Reported Cases
+            </div>
+
+            <div class="stat-number">
+                {{ reported_cases }}
+            </div>
+
+        </div>
+
+
+        <!-- ACTIVE CASES -->
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Active Cases
+            </div>
+
+            <div class="stat-number">
+                {{ active_cases }}
+            </div>
+
+        </div>
+
+
+        <!-- UNDER REVIEW -->
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Under Review
+            </div>
+
+            <div class="stat-number">
+                {{ under_review }}
+            </div>
+
+        </div>
+
+
+        <!-- RESOLVED CASES -->
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Resolved Cases
+            </div>
+
+            <div class="stat-number">
+                {{ resolved_cases }}
+            </div>
+
+        </div>
+
+
+        <!-- ALERTS -->
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Alerts Issued
+            </div>
+
+            <div class="stat-number">
+                {{ total_alerts }}
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- CASE STATUS CHART -->
+
+    <div class="chart-card">
+
+        <h2>Case Status Distribution</h2>
+
+        <p>
+            Visual representation of the current missing-child case status.
+        </p>
+
+
+        {% if total_cases > 0 %}
+
+
+        <!-- REPORTED -->
+
+        <div class="chart-row">
+
+            <div class="chart-label">
+
+                <span>
+                    Reported Cases
+                </span>
+
+                <span>
+                    {{ reported_cases }}
+                </span>
+
+            </div>
+
+
+            <div class="chart-bar-background">
+
+                <div
+                    class="chart-bar"
+                    data-percentage="{{ reported_percentage }}"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIVE -->
+
+        <div class="chart-row">
+
+            <div class="chart-label">
+
+                <span>
+                    Active Cases
+                </span>
+
+                <span>
+                    {{ active_cases }}
+                </span>
+
+            </div>
+
+
+            <div class="chart-bar-background">
+
+                <div
+                    class="chart-bar"
+                    data-percentage="{{ active_percentage }}"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- UNDER REVIEW -->
+
+        <div class="chart-row">
+
+            <div class="chart-label">
+
+                <span>
+                    Under Review
+                </span>
+
+                <span>
+                    {{ under_review }}
+                </span>
+
+            </div>
+
+
+            <div class="chart-bar-background">
+
+                <div
+                    class="chart-bar"
+                    data-percentage="{{ under_review_percentage }}"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RESOLVED -->
+
+        <div class="chart-row">
+
+            <div class="chart-label">
+
+                <span>
+                    Resolved Cases
+                </span>
+
+                <span>
+                    {{ resolved_cases }}
+                </span>
+
+            </div>
+
+
+            <div class="chart-bar-background">
+
+                <div
+                    class="chart-bar"
+                    data-percentage="{{ resolved_percentage }}"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        {% else %}
+
+
+        <p>
+            No missing-child cases are available yet.
+        </p>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+
+    <!-- CASE SUMMARY -->
+
+    <div class="summary-card">
+
+        <h2>Case Summary</h2>
+
+
+        <div class="summary-row">
+
+            <span>
+                Total Registered Cases
+            </span>
+
+            <strong>
+                {{ total_cases }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                Newly Reported Cases
+            </span>
+
+            <strong>
+                {{ reported_cases }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                Currently Active Missing Cases
+            </span>
+
+            <strong>
+                {{ active_cases }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                Cases Under Review
+            </span>
+
+            <strong>
+                {{ under_review }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                Successfully Resolved Cases
+            </span>
+
+            <strong>
+                {{ resolved_cases }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row">
+
+            <span>
+                Total System Alerts
+            </span>
+
+            <strong>
+                {{ total_alerts }}
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- RECENT CASES REPORT -->
+
+    <div class="recent-report-card">
+
+        <h2>Recent Missing-Child Cases</h2>
+
+
+        {% if recent_cases %}
+
+
+        <div class="table-wrapper">
+
+            <table class="recent-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Case Number</th>
+
+                        <th>Child Name</th>
+
+                        <th>Age</th>
+
+                        <th>Last Seen Location</th>
+
+                        <th>Status</th>
+
+                        <th>Registered</th>
+
+                        <th>View</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for case in recent_cases %}
+
+
+                    <tr>
+
+                        <td>
+
+                            <strong>
+                                {{ case.case_number }}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+                            {{ case.child_name }}
+                        </td>
+
+
+                        <td>
+                            {{ case.age }}
+                        </td>
+
+
+                        <td>
+                            {{ case.location_last_seen }}
+                        </td>
+
+
+                        <td>
+
+                            <span class="status-badge">
+                                {{ case.get_status_display }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            {{ case.created_at|date:"d M Y" }}
+                        </td>
+
+
+                        <td>
+
+                            <a
+                                href="{% url 'case_detail' case.id %}"
+                                class="view-case-btn"
+                            >
+                                View Details
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+
+        <p class="no-cases">
+            No missing-child cases are available yet.
+        </p>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+</div>
+
+
+
+<footer>
+
+    SafeTrace — Missing Child Alert and Response System
+
+    <br>
+
+    Academic Project Prototype
+
+</footer>
+
+
+<script>
+
+    document.querySelectorAll(".chart-bar").forEach(function(bar) {
+
+        const percentage = bar.dataset.percentage;
+
+        bar.style.width = percentage + "%";
+
+    });
+
+</script>
+
+
+</body>
+
+</html>

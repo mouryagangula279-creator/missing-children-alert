@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SafeTrace | Register Missing Child</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+            color: #1f2937;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #17365d;
+            color: white;
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 45px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .brand h1 {
+            font-size: 23px;
+        }
+
+        .brand p {
+            font-size: 12px;
+            margin-top: 3px;
+            opacity: 0.9;
+        }
+
+        .back {
+            text-decoration: none;
+            color: #17365d;
+            background: white;
+            padding: 9px 17px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* MAIN */
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .page-heading {
+            margin-bottom: 25px;
+        }
+
+        .page-heading h2 {
+            color: #17365d;
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .page-heading p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* FORM CARD */
+
+        .form-card {
+            background: white;
+            border: 1px solid #e1e5ea;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .form-header {
+            background: #eef4fb;
+            padding: 18px 25px;
+            border-bottom: 1px solid #d9e2ec;
+        }
+
+        .form-header h3 {
+            color: #17365d;
+            font-size: 17px;
+        }
+
+        .form-header p {
+            margin-top: 5px;
+            color: #667085;
+            font-size: 12px;
+        }
+
+        .form-body {
+            padding: 30px 28px;
+        }
+
+        /* SECTION */
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            color: #17365d;
+            font-size: 16px;
+            padding-bottom: 9px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        /* GRID */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #344054;
+            margin-bottom: 7px;
+        }
+
+        .required {
+            color: #b42318;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #cfd5dc;
+            border-radius: 5px;
+            font-size: 13px;
+            color: #344054;
+            background: white;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #17365d;
+            box-shadow: 0 0 0 2px rgba(23, 54, 93, 0.08);
+        }
+
+        input[type="file"] {
+            padding: 10px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .help-text {
+            margin-top: 5px;
+            color: #98a2b3;
+            font-size: 11px;
+        }
+
+        /* ERRORS */
+
+        .error-box {
+            background: #fef3f2;
+            border: 1px solid #fecdca;
+            color: #b42318;
+            padding: 13px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .field-error {
+            color: #b42318;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        /* BUTTONS */
+
+        .form-actions {
+            margin-top: 30px;
+            padding-top: 22px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .btn {
+            border: none;
+            padding: 11px 22px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background: #eef1f4;
+            color: #344054;
+        }
+
+        .btn-primary {
+            background: #17365d;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #102a49;
+        }
+
+        /* NOTICE */
+
+        .notice {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 14px 16px;
+            margin-bottom: 25px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #667085;
+        }
+
+        .notice strong {
+            color: #17365d;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            background: #17365d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 45px;
+        }
+
+        .footer p {
+            font-size: 11px;
+            opacity: 0.9;
+            margin: 3px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            .header {
+                padding: 15px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .form-body {
+                padding: 22px 18px;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="logo">
+            ST
+        </div>
+
+        <div>
+            <h1>SafeTrace</h1>
+            <p>Missing Child Alert and Response System</p>
+        </div>
+
+    </div>
+
+    <a href="{% url 'dashboard' %}" class="back">
+        Back to Dashboard
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <div class="page-heading">
+
+        <h2>Register Missing Child</h2>
+
+        <p>
+            Record the details of a newly reported missing-child case.
+        </p>
+
+    </div>
+
+
+    <div class="notice">
+
+        <strong>Important:</strong>
+
+        Please verify the information entered before submitting the
+        report. Required fields must be completed accurately.
+
+    </div>
+
+
+    <div class="form-card">
+
+        <div class="form-header">
+
+            <h3>Missing Child Case Information</h3>
+
+            <p>
+                Enter the available information in the appropriate fields below.
+            </p>
+
+        </div>
+
+
+        <div class="form-body">
+
+            {% if form.non_field_errors %}
+
+                <div class="error-box">
+                    {{ form.non_field_errors }}
+                </div>
+
+            {% endif %}
+
+
+            <!-- IMPORTANT: enctype added for photo upload -->
+
+            <form
+                method="POST"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+
+                
+
+
+                <!-- CHILD INFORMATION -->
+
+                <section class="form-section">
+
+                    <h3 class="section-title">
+                        Child Information
+                    </h3>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- CHILD NAME -->
+
+                        <div class="form-group">
+
+                            <label for="{{ form.child_name.id_for_label }}">
+                                Child Name
+                                <span class="required">*</span>
+                            </label>
+
+                            {{ form.child_name }}
+
+                            {% for error in form.child_name.errors %}
+                                <span class="field-error">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- AGE -->
+
+                        <div class="form-group">
+
+                            <label for="{{ form.age.id_for_label }}">
+                                Age
+                                <span class="required">*</span>
+                            </label>
+
+                            {{ form.age }}
+
+                            {% for error in form.age.errors %}
+                                <span class="field-error">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- GENDER -->
+
+                        <div class="form-group">
+
+                            <label for="{{ form.gender.id_for_label }}">
+                                Gender
+                                <span class="required">*</span>
+                            </label>
+
+                            {{ form.gender }}
+
+                            {% for error in form.gender.errors %}
+                                <span class="field-error">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- DATE LAST SEEN -->
+
+                        <div class="form-group">
+
+                            <label for="{{ form.date_last_seen.id_for_label }}">
+                                Date Last Seen
+                                <span class="required">*</span>
+                            </label>
+
+                            {{ form.date_last_seen }}
+
+                            {% for error in form.date_last_seen.errors %}
+                                <span class="field-error">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <!-- CHILD PHOTO -->
+
+                        <div class="form-group full">
+
+                            <label for="{{ form.photo.id_for_label }}">
+                                Child Photo
+                                <span class="required">*</span>
+                            </label>
+
+                            {{ form.photo }}
+
+                            <span class="help-text">
+                                Upload a clear photo of the child.
+                            </span>
+
+                            {% for error in form.photo.errors %}
+                                <span class="field-error">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- LAST SEEN INFORMATION -->
+
+                <section class="form-section">
+
+                    <h3 class="section-title">
+                        Last Seen Information
+                    </h3>
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group full">
+
+                            <label for="{{ form.location_last_seen.id_for_label }}">
+                                Location Last Seen
+                                <span class="required">*</span>
+                            </label>
+
+                            {{ form.location_last_seen }}
+
+                            <span class="help-text">
+                                Provide the location where the child was last seen.
+                            </span>
+
+                            {% for error in form.location_last_seen.errors %}
+                                <span class="field-error">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="{{ form.description.id_for_label }}">
+                                Description
+                                <span class="required">*</span>
+                            </label>
+
+                            {{ form.description }}
+
+                            <span class="help-text">
+                                Enter relevant identifying information and other
+                                details that may assist the response.
+                            </span>
+
+                            {% for error in form.description.errors %}
+                                <span class="field-error">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- GUARDIAN INFORMATION -->
+
+                <section class="form-section">
+
+                    <h3 class="section-title">
+                        Guardian / Contact Information
+                    </h3>
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="{{ form.guardian_name.id_for_label }}">
+                                Guardian Name
+                                <span class="required">*</span>
+                            </label>
+
+                            {{ form.guardian_name }}
+
+                            {% for error in form.guardian_name.errors %}
+                                <span class="field-error">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="{{ form.guardian_contact.id_for_label }}">
+                                Guardian Contact
+                                <span class="required">*</span>
+                            </label>
+
+                            {{ form.guardian_contact }}
+
+                            {% for error in form.guardian_contact.errors %}
+                                <span class="field-error">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- BUTTONS -->
+
+                <div class="form-actions">
+
+                    <a
+                        href="{% url 'dashboard' %}"
+                        class="btn btn-secondary"
+                    >
+                        Cancel
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Submit Case
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    <p>
+        SafeTrace — Missing Child Alert and Response System
+    </p>
+
+    <p>
+        Academic Project Prototype
+    </p>
+
+</footer>
+
+</body>
+
+</html>
