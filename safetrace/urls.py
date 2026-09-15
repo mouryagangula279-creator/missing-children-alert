@@ -12,20 +12,31 @@ from accounts import views
 
 urlpatterns = [
 
-    # Admin
+    # ============================================================
+    # ADMIN
+    # ============================================================
+
     path(
         "admin/",
         admin.site.urls
     ),
 
-    # Home
+
+    # ============================================================
+    # HOME
+    # ============================================================
+
     path(
         "",
         views.home,
         name="home"
     ),
 
-    # Authentication
+
+    # ============================================================
+    # AUTHENTICATION
+    # ============================================================
+
     path(
         "login/",
         views.login_view,
@@ -38,119 +49,131 @@ urlpatterns = [
         name="logout"
     ),
 
-    # Dashboard
+
+    # ============================================================
+    # DASHBOARD
+    # ============================================================
+
     path(
         "dashboard/",
         views.dashboard,
         name="dashboard"
     ),
 
-    # Register Missing Child
+
+    # ============================================================
+    # MISSING CHILD REGISTRATION
+    # ============================================================
+
     path(
         "register-missing-child/",
         views.register_missing_child,
         name="register_missing_child"
     ),
 
-    # Missing Cases
+
+    # ============================================================
+    # MISSING CASES
+    # ============================================================
+
     path(
         "missing-cases/",
         views.missing_cases,
         name="missing_cases"
     ),
 
-    # Case Details
+
+    # ============================================================
+    # CASE DETAILS
+    # ============================================================
+
     path(
         "case/<int:case_id>/",
         views.case_detail,
         name="case_detail"
     ),
 
-    # Update Case Status
+
+    # ============================================================
+    # UPDATE CASE STATUS
+    # ============================================================
+
     path(
         "case/<int:case_id>/update-status/",
         views.update_case_status,
         name="update_case_status"
     ),
 
-    # Alerts
+
+    # ============================================================
+    # EDIT CASE
+    # ============================================================
+
+    path(
+        "case/<int:case_id>/edit/",
+        views.edit_case,
+        name="edit_case"
+    ),
+
+
+    # ============================================================
+    # DELETE CASE
+    # ============================================================
+
+    path(
+        "case/<int:case_id>/delete/",
+        views.delete_case,
+        name="delete_case"
+    ),
+
+
+    # ============================================================
+    # ALERTS
+    # ============================================================
+
     path(
         "alerts/",
         views.alerts,
         name="alerts"
     ),
 
-    # Mark Alert as Read
     path(
         "alerts/<int:alert_id>/read/",
         views.mark_alert_read,
         name="mark_alert_read"
     ),
 
-    # Reports
+    path(
+        "alerts/mark-all-read/",
+        views.mark_all_alerts_read,
+        name="mark_all_alerts_read"
+    ),
+
+
+    # ============================================================
+    # REPORTS
+    # ============================================================
+
     path(
         "reports/",
         views.reports,
         name="reports"
     ),
-    path(
-        "case/<int:case_id>/edit/",
-        views.edit_case,
-        name="edit_case"
-    ),
-    path(
-        "cases/<int:case_id>/edit/",
-        views.edit_case,
-        name="edit_case"
-    ),
-    path(
-        "case/<int:case_id>/delete/",
-        views.delete_case,
-        name="delete_case"
-    ),
-    path(
-        "case/<int:case_id>/delete/",
-        views.delete_case,
-        name="delete_case"
-    ),
-    path(
-        "alerts/mark-all-read/",
-        views.mark_all_alerts_read,
-        name="mark_all_alerts_read"
-    ),
-    path(
-        "alerts/mark-all-read/",
-        views.mark_all_alerts_read,
-        name="mark_all_alerts_read"
-    ),path("alerts/", views.alerts, name="alerts"),
-    path(
-        "alerts/read/<int:alert_id>/",
-        views.mark_alert_read,
-        name="mark_alert_read"
-    ),
-    path(
-        "alerts/mark-all-read/",
-        views.mark_all_alerts_read,
-        name="mark_all_alerts_read"
-    ),
+
     path(
         "reports/download/",
         views.download_report,
         name="download_report"
-    ),  
-    path(
-        "download-report/",
-        views.download_report,
-        name="download_report"
     ),
-
 ]
 
 
-# Media files (uploaded child photos)
-if settings.DEBUG:
+# ============================================================
+# MEDIA FILES
+# ============================================================
+# Used during local development for uploaded child photos.
 
-    urlpatterns += static(
-        settings.MEDIA_URL,
-        document_root=settings.MEDIA_ROOT
-    )
+urlpatterns += static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT
+)
