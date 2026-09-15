@@ -1,3 +1,6 @@
+import os
+from django.conf import settings
+from django.http import FileResponse, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -857,4 +860,18 @@ def logout_view(request):
 
     return redirect(
         "home"
+    )
+def serve_media(request, path):
+    """
+    Serve uploaded media files for the SafeTrace prototype.
+    """
+
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+
+    if not os.path.isfile(file_path):
+        raise Http404("Media file not found")
+
+    return FileResponse(
+        open(file_path, "rb"),
+        content_type="image/jpeg"
     )
